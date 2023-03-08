@@ -1,5 +1,6 @@
 package com.fvbri.simpleytclone.model;
 
+import com.fvbri.simpleytclone.model.user.User;
 import com.fvbri.simpleytclone.model.video.Video;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

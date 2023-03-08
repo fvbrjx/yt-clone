@@ -1,10 +1,11 @@
-package com.fvbri.simpleytclone.model;
+package com.fvbri.simpleytclone.model.user;
 
 
 import com.fvbri.simpleytclone.model.video.Video;
 import com.fvbri.simpleytclone.model.video.VideoHistory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +42,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "video_id"))
     private List<Video> likedVideos;
+
+
+    private String authSub;
 }

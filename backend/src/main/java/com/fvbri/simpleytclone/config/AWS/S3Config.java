@@ -15,8 +15,9 @@ public class S3Config {
     private final String ACCESS_KEY;
     private final String SECRET_KEY;
 
-    public S3Config(@Value("${spring.aws-access-key}") String ACCESS_KEY,
-                    @Value("${spring.aws-secret-key}") String SECRET_KEY
+    public S3Config(
+            @Value("${spring.aws-access-key}") String ACCESS_KEY,
+            @Value("${spring.aws-secret-key}") String SECRET_KEY
     ) {
         this.ACCESS_KEY = ACCESS_KEY;
         this.SECRET_KEY = SECRET_KEY;

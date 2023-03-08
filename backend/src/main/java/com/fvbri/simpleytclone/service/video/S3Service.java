@@ -44,7 +44,7 @@ public class S3Service implements FileService {
                 CannedAccessControlList.PublicRead);
 
         final String resourceUrl = amazonS3Client.getResourceUrl(BUCKET_NAME, key);
-
+//        amazonS3Client.deleteObject(BUCKET_NAME, key);
         return resourceUrl;
     }
 

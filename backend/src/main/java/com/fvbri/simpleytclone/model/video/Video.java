@@ -39,7 +39,7 @@ public class Video {
     @Column(name = "view_count")
     private int viewCount;
     @Column(name = "thumb_nail_url")
-    private String thumbNailUrl;
+    private String thumbnailUrl;
 
     @OneToMany(mappedBy = "video", cascade = CascadeType.REMOVE)
     private List<Comment> comments;

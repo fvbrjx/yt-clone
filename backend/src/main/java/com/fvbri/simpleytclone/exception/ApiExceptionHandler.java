@@ -1,7 +1,9 @@
 package com.fvbri.simpleytclone.exception;
 
+import com.fvbri.simpleytclone.exception.user.UserAlreadyExistException;
 import com.fvbri.simpleytclone.exception.video.VideoUploadException;
 import com.fvbri.simpleytclone.model.response.ApiExceptionResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -47,4 +49,24 @@ public class ApiExceptionHandler {
 
         return new ResponseEntity<>(notFound,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public ResponseEntity<ApiExceptionResponse> handleException(UserAlreadyExistException exception) {
+        ApiExceptionResponse ex = new ApiExceptionResponse(
+                Arrays.asList(exception.getMessage()),
+                HttpStatus.CONFLICT,
+                HttpStatus.CONFLICT.value());
+
+        return new ResponseEntity<>(ex,HttpStatus.CONFLICT);
+    }
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ApiExceptionResponse> handleException(EntityNotFoundException exception) {
+        ApiExceptionResponse ex = new ApiExceptionResponse(
+                Arrays.asList(exception.getMessage()),
+                HttpStatus.NOT_FOUND,
+                HttpStatus.NOT_FOUND.value());
+
+        return new ResponseEntity<>(ex,HttpStatus.NOT_FOUND);
+    }
+
 }

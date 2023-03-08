@@ -2,14 +2,15 @@
 server:
   port: 8081
 
-#### spring & mysql cred
+#### spring
 spring:
+  ### mysql CONFIG
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/yt_clone?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
     username: springRestAPI
   jpa:
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
@@ -22,8 +23,17 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
-
-
+  ### OAUTH CONFIG
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-6k2wnavd.us.auth0.com/
+auth0:
+  audience: http://localhost:8081/
+  domain: dev-6k2wnavd.us.auth0.com
+  client-id: dgMSgjp87fvNTjZOrZyT3gJqabojAtyW
+  client-secret: GZ-TsSCB_SN8HH98b6Y5kc0pj-ildIRp3zXk0Bz3C6rGgc6urzuJQ61orGALMEwQ
 
 
 
